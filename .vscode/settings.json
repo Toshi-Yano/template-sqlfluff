@@ -1,0 +1,15 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "[sql]": {
+        "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+    },
+    "[sql-bigquery]": {
+        "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+    },
+    "sqlfluff.executablePath": "sqlfluff.exeのパス",
+    "sqlfluff.config": "${workspaceFolder}/.sqlfluff"
+}

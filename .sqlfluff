@@ -1,0 +1,47 @@
+[sqlfluff]
+dialect = bigquery
+max_line_length = 200
+output_line_length = 200
+sql_file_exts = .sql,.bqsql
+# Remove byte limitation
+large_file_skip_byte_limit = 0
+
+# Choose what to exclude from the rules
+exclude_rules = 
+    # Configuration to prevent changing the column order with sqlfluff fix
+    structure.column_order
+    ,ambiguous.column_count
+    ,structure.using
+    # Added because Salesforce becomes hard to read when converted to lower camel case
+    ,capitalisation.identifiers
+
+[sqlfluff:indentation]
+indent_unit = space
+tab_space_size = 2
+
+[sqlfluff:rules:layout.long_lines]
+# Comments lines can be long, to allow for URLs, etc.
+# Ignore comment lines regarding line length
+ignore_comment_lines = True 
+# Ignore comment clauses regarding line length
+ignore_comment_clauses = True 
+
+[sqlfluff:rules:capitalisation.keywords]
+# Case of reserved words
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.functions]
+# Case of function names
+extended_capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.literals]
+# Case of literal values (null, true, false)
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.types]
+# Case of data types
+extended_capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]
+# Avoid the issue where calls in the form of normalize(str, 'NFKC') are turned into normalize(str, 'nfkc')
+ignore_words = NFD,NFC,NFKD,NFKC
